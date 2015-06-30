@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+#[ $# -ge 2 ] && servers="${@:2}"; dist=$1; echo "args" || readarray -t servers; echo "stdin"
+
+if [ $# -ge 2 ]; then
+	servers="${@:2}"
+	dist=$1
+else
+	readarray -t servers
+	dist=$1
+	echo "stdin"
+	echo $1
+fi
+
+for server in "${servers[@]}"; do
+	echo $dist $server:
+done
