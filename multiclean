@@ -4,6 +4,4 @@
 
 for server in "${input[@]}"; do
 	ssh $server "rm -rf * && mkdir tmp"
-	echo "/home after cleaning: "
-	ssh $server "ls"
 done
