@@ -2,12 +2,12 @@
 
 if [ $# -ge 2 ]; then
 	servers="${@:2}"
-	dist=$1
+	cmd=$1
 else
 	readarray -t servers
-	dist=$1
+	cmd=$1
 fi
 
 for server in "${servers[@]}"; do
-	scp $dist $server:
+	ssh $server $cmd
 done
