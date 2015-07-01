@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+MPLAYER_PIPE=/tmp/mplayercontrol
+
+echo "loadfile $(getmfpurl)" > $MPLAYER_PIPE

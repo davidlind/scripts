@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curl -s http://www.musicforprogramming.net/rss.php | xml sel -t -m "//item" -n -v "comments" - | shuf | sed q1
