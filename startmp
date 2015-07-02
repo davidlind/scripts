@@ -1,8 +1,17 @@
 #!/usr/bin/env bash
 
-if [[ $(pidof mplayer) ]] && [[ -p /tmp/mplayercontrol ]]; then
-	echo "mplayer is already running"
-else
-	mkfifo /tmp/mplayercontrol
-	mplayer -cache 1024 -slave -idle -input file=/tmp/mplayercontrol &> ~/.log/mplayer.log &
+#if [[ $(pidof mplayer) ]] && [[ -p /tmp/mplayercontrol ]]; then
+#	echo "mplayer is already running"
+#else
+#	mkfifo /tmp/mplayercontrol
+#	mplayer -cache 1024 -slave -idle -input file=/tmp/mplayercontrol &> ~/.log/mplayer.log &
+#fi
+
+if [[ -p /tmp/mplayercontrol ]]; then
+	rm /tmp/mplayercontrol
 fi
+
+pkill mplayer
+
+mkfifo /tmp/mplayercontrol
+mplayer -cache 1024 -slave -idle -input file=/tmp/mplayercontrol &> ~/.log/mplayer.log &

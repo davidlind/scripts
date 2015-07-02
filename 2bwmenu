@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+thingmenu -g 80x40 "finch" "finchshow" \
+		   "web" "qutebrowser"

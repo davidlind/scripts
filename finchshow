@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+CWID=$(xdotool getactivewindow)
+WID=$(xdotool search --name finch)
+
+if [[ $(pidof finch) ]]; then
+	if [[ $CWID == $WID ]]; then
+		xdotool windowunmap $WID
+	else
+		xdotool windowmap $WID
+		xdotool windowraise $WID
+		xdotool windowfocus $WID
+	fi
+else
+	urxvt -geometry 150x50 -name finch -e finch 
+fi
